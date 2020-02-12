@@ -1,0 +1,30 @@
+---
+title: "Class 02-12"
+author: "Angela Fu"
+date: "2/12/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(reprex)
+library(tidyverse)
+```
+
+Create a simulation for clumping by gender problem
+
+```{r}
+#our code
+female <- rep("F", 16)
+male <- rep("M", 14)
+class <- c(female, male)
+
+
+sample(class)
+```
+
+```{r}
+#preceptor's code
+class30 <- c(rep("M", 16), rep("F", 14))
+
+```
