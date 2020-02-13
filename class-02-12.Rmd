@@ -28,3 +28,42 @@ sample(class)
 class30 <- c(rep("M", 16), rep("F", 14))
 
 ```
+
+```{r}
+library(randomizr)
+
+block_ra(blocks = class30)
+```
+
+
+
+
+
+```{r}
+
+library(moderndive)
+
+class <- tibble(id=1:32) %>%
+  mutate(gender = ifelse(id < 15, 0, 1)) %>%
+  select(gender)
+
+
+  sample <- rep_sample_n(class, size = 32, replace = FALSE, reps = 1000) %>%
+    group_by(replicate) %>%
+    mutate(table = rep(1:8, each = 4)) %>%
+    group_by(table, replicate) %>%
+    summarize(total = sum(gender)) %>%
+    mutate(homogenous = ifelse((total == 0 | total == 4), 1, 0))
+  
+  sample2 <- sample %>%
+    group_by(replicate) %>%
+    summarize(homogenous_per_class = sum(homogenous))
+```
+
+
+
+
+
+
+
+
